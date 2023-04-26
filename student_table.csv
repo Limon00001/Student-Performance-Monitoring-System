@@ -1,0 +1,3 @@
+﻿studentID,firstName,lastName,dateOfBirth,gender,email,phone,address,departmentID,programID,password,enrollmentSemester,enrollmentYear
+1930249,Sheikh,Hasina,5/7/1999,female,1930249@iub.edu.bd,125556,R-99,CSE,17,12345,summer,2019
+1931198,Khaleda,Zia,8/5/2000,female,1931198@iub.edu.bd,177789,R-52,CSE,7,12345,autumn,2018
