@@ -483,7 +483,7 @@ if(!empty($_GET['status'])){
     switch($_GET['status']){
         case 'succ':
             $statusType = 'alert-success';
-            $statusMsg = 'Members data has been imported successfully.';
+            $statusMsg = 'Data has been imported successfully.';
             break;
         case 'err':
             $statusType = 'alert-danger';
@@ -533,23 +533,25 @@ if(!empty($_GET['status'])){
                 <th>Student ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Birth date</th>
+                <!-- <th>Birth date</th> -->
                 <th>Gender</th>
                 <th>E-mail</th>
-                <th>Contact no.</th>
-                <th>Address</th>
+                <!-- <th>Contact no.</th> -->
+                <!-- <th>Address</th> -->
                 <th>Dept</th>
-                <th>Program ID</th>
-                <th>Pass</th>
+                <!-- <th>Program ID</th> -->
+                <!-- <th>Pass</th> -->
                 <th>Semester</th>
                 <th>Year</th>
+                <th>Course</th>
+                <th>Marks</th>
             </tr>
         </thead>
         <tbody>
 
 <?php
 //  Student rows
-$result = $db->query("SELECT * FROM student_t ORDER BY firstName, lastName DESC");
+$result = $db->query("SELECT * FROM student_t, grade_t ORDER BY marks DESC");
 if($result->num_rows > 0){
     while($row = $result->fetch_assoc()){
 ?>
@@ -557,14 +559,14 @@ if($result->num_rows > 0){
         <td><?php echo $row['studentID']; ?></td>
         <td><?php echo $row['firstName']; ?></td>
         <td><?php echo $row['lastName']; ?></td>
-        <td><?php echo $row['dateOfBirth']; ?></td>
+        <!-- <td><?php echo $row['dateOfBirth']; ?></td> -->
         <td><?php echo $row['gender']; ?></td>
         <td><?php echo $row['email']; ?></td>
-        <td><?php echo $row['phone']; ?></td>
-        <td><?php echo $row['address']; ?></td>
+        <!-- <td><?php echo $row['phone']; ?></td> -->
+        <!-- <td><?php echo $row['address']; ?></td> -->
         <td><?php echo $row['departmentID']; ?></td>
-        <td><?php echo $row['programID']; ?></td>
-        <td><?php echo $row['password']; ?></td>
+        <!-- <td><?php echo $row['programID']; ?></td> -->
+        <!-- <td><?php echo $row['password']; ?></td> -->
         <td><?php echo $row['enrollmentSemester']; ?></td>
         <td><?php echo $row['enrollmentYear']; ?></td>
     </tr>

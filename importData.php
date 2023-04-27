@@ -35,19 +35,26 @@ if(isset($_POST['importSubmit'])){
                 $pass   = $line[10];
                 $ensem  = $line[11];
                 $enyear = $line[12];
+                $courseID = $line[13];
+                $mark = $line[14];
                 
-                // Check whether member already exists in the database with the same email
-                $prevQuery = "SELECT studentID FROM student_t WHERE studentID != '".$line[0]."'";
-                $prevResult = $db->query($prevQuery);
                 
-                if($prevResult->num_rows > 0)
+                // $prevQuery = "SELECT studentID FROM student_t, grade_t WHERE studentID != '".$line[0]."'";
+                // $prevResult = $db->query($prevQuery);
+
+                $insert = "INSERT INTO student_t (studentID, firstName, lastName, dateOfBirth, gender, email, phone, address, departmentID, programID, password, enrollmentSemester, enrollmentYear) VALUES ('".$stdID."', '".$fname."', '".$lname."', '".$dob."', '".$gender."', '".$email."', '".$phone."', '".$address."', '".$dept."', '".$prog."', '".$pass."', '".$ensem."', '".$enyear."')";
+
+                $query = mysqli_query($db, $insert) or die(mysali_error($db));
+                
+                if($query==1)
                 // {
                 //     // Update member data in the database
                 //     $db->query("SQL command according to table info");
                 // }
                 {
                     // Insert member data in the database
-                    $db->query("INSERT INTO student_t (studentID, firstName, lastName, dateOfBirth, gender, email, phone, address, departmentID, programID, password, enrollmentSemester, enrollmentYear) VALUES ('".$stdID."', '".$fname."', '".$lname."', '".$dob."', '".$gender."', '".$email."', '".$phone."', '".$address."', '".$dept."', '".$prog."', '".$pass."', '".$ensem."', '".$enyear."')");
+                     $insert2 = "INSERT INTO grade_t (studentID, courseID, marks) VALUES ('".$stdID."', '".$courseID."', '".$mark."')";
+                     $quey = mysqli_query($db, $insert2);
                 }
             }
             
